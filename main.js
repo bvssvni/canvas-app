@@ -54,15 +54,3 @@ function draw() {
 	g.print("Last pressed: " + lastPressed, 50, 300);
 }
 
-function keypress() {
-	
-}
-
-function keydown() {
-	
-}
-
-function keyup() {
-	
-}
-

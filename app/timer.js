@@ -69,7 +69,7 @@ function load_timer() {
 				timer.lastUpdate += 1/timer.updateRate;
 				timer.doUpdate = true;
 			}
-			if (timer.doUpdate) update();
+			if (timer.doUpdate && update != null) update();
 		}
 		while (timer.doUpdate && (timer.now - timer.lastFrame) < 0.25);
 		
@@ -86,7 +86,7 @@ function load_timer() {
 			timer.doDrawing = true;
 		}
 		
-		if (timer.doDrawing) draw();
+		if (timer.doDrawing && draw != null) draw();
 	}
 	
 	timer.setFPS = function(frameRate) {

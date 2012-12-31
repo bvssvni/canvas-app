@@ -51,9 +51,9 @@
 	function init() {
 		var box = document.getElementById("box");
 		var context = box.getContext("2d");
-		var graphics = load_graphics(box, context);
-		var timer = load_timer();
-		var keyboard = load_keyboard(box);
+		var graphics = load_graphics == null ? null : load_graphics(box, context);
+		var timer = load_timer == null ? null : load_timer();
+		var keyboard = load_keyboard == null ? null : load_keyboard(box);
 		
 		app.context = context;
 		app.graphics = graphics;
@@ -62,8 +62,10 @@
 		
 		document.app = app;
 		
-		load();
-		window.setInterval(timer.update, 0);
+		if (load != null) load();
+		if (timer != null && timer.update != null) {
+			window.setInterval(timer.update, 0);
+		}
 	}
 </script>
 </head>
