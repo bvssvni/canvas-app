@@ -5,6 +5,8 @@ Javascript framework for developing browser apps.
 BSD license.  
 For version log, view the individual files.  
 
+![Reference manual](https://github.com/bvssvni/canvas-app/wiki/Reference-Manual)
+
 ##Example
 
 <a target="_blank" href="http://htmlpreview.github.com/?https://github.com/bvssvni/canvas-app/blob/master/index.html">FPS, UPS, Keyboard</a>
