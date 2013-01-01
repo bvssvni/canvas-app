@@ -41,6 +41,7 @@ function load_keyboard(box) {
 	
 	var keyboard = {};
 	keyboard.metaDown = false;
+	keyboard.pressed = {};
 	
 	keyboard.isShift = function(keyCode) {
 		return keyCode == 16;
@@ -77,6 +78,9 @@ function load_keyboard(box) {
 		event = event || window.event;
 		
 		var keyCode = event.keyCode;
+		if (keyboard.pressed[keyCode]) return;
+		
+		keyboard.pressed[keyCode] = true;
 		if (keyboard.isMeta(keyCode)) keyboard.metaDown = true;
 		if (keyboard.metaDown) return;
 		if (typeof(keypressed) == "function") keypressed(keyCode);
@@ -85,6 +89,7 @@ function load_keyboard(box) {
 		event = event || window.event;
 		
 		var keyCode = event.keyCode;
+		keyboard.pressed[keyCode] = false;
 		if (keyboard.isMeta(keyCode)) keyboard.metaDown = false;
 		if (keyboard.metaDown) return;
 		if (typeof(keyreleased) == "function") keyreleased(keyCode);
