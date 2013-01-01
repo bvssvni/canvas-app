@@ -86,7 +86,7 @@ function load_timer() {
 			timer.doDrawing = true;
 		}
 		
-		if (timer.doDrawing && draw != null) draw();
+		if (timer.doDrawing && typeof(draw) == "function") draw();
 	}
 	
 	timer.setFPS = function(frameRate) {

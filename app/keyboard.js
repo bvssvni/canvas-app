@@ -85,7 +85,7 @@ function load_keyboard(box) {
 		var keyCode = event.keyCode;
 		if (keyboard.isModifier(keyCode)) keyboard.modifierCount++;
 		
-		if (keypressed != null) keypressed(keyCode);
+		if (typeof(keypressed) == "function") keypressed(keyCode);
 	}
 	box.onkeyup = function(event) {
 		event = event || window.event;
@@ -93,7 +93,7 @@ function load_keyboard(box) {
 		var keyCode = event.keyCode;
 		if (keyboard.isModifier(keyCode)) keyboard.modifierCount--;
 		
-		if (keyreleased != null) keyreleased(keyCode);
+		if (typeof(keyreleased) == "function") keyreleased(keyCode);
 	}
 	
 	return keyboard;

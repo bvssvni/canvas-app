@@ -43,14 +43,26 @@ function draw() {
 	g.clear("#000000");
 	
 	g.setColorRGBA(200, 10, 100, 255);
-	g.ellipse("fill", x, 0, 100, 100);
+	g.ellipse("fill", x, y - 50, 100, 100);
 	g.setColor("white");
-	g.ellipse("fill", x+10, 10, 80, 80);
+	g.ellipse("fill", x+10, y - 50 + 10, 80, 80);
 	
 	g.setColorRGBA(255, 255, 255, 255);
 	g.setFont("Arial", "normal", 50);
 	g.print("FPS: " + timer.getFPS(), 50, 200);
 	g.print("UPS: " + timer.getUPS(), 50, 250);
 	g.print("Last pressed: " + lastPressed, 50, 300);
+}
+
+function mouseMove() {
+	y = app.mouse.getY();
+}
+
+function mousePressed(button) {
+	
+}
+
+function mouseReleased(button) {
+	
 }
 

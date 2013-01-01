@@ -59,24 +59,31 @@
 <script src="app/graphics.js"></script>
 <script src="app/timer.js"></script>
 <script src="app/keyboard.js"></script>
+<script src="app/mouse.js"></script>
 <script>
 	var app = {};
 	function init() {
 		var box = document.getElementById("box");
 		var context = box.getContext("2d");
-		var graphics = load_graphics == null ? null : load_graphics(box, context);
-		var timer = load_timer == null ? null : load_timer();
-		var keyboard = load_keyboard == null ? null : load_keyboard(box);
+		var graphics = typeof(load_graphics) == "function"
+		? load_graphics(box, context) : null;
+		var timer = typeof(load_timer) == "function"
+		? load_timer() : null;
+		var keyboard = typeof(load_keyboard) == "function"
+		? load_keyboard(box) : null;
+		var mouse = typeof(load_mouse) == "function"
+		? load_mouse(box) : null;
 		
 		app.context = context;
 		app.graphics = graphics;
 		app.timer = timer;
 		app.keyboard = keyboard;
+		app.mouse = mouse;
 		
 		document.app = app;
 		
 		if (load != null) load();
-		if (timer != null && timer.update != null) {
+		if (timer != null && typeof(timer.update) == "function") {
 			window.setInterval(timer.update, 0);
 		}
 	}
