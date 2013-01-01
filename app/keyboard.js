@@ -72,11 +72,8 @@ function load_keyboard(box) {
 	keyboard.isLeft = function(keyCode) {
 		return keyCode == 65 || keyCode == 37;
 	}
-	keyboard.isJump = function(keyCode) {
-		return keyCode == 32;	// space.
-	}
-	keyboard.isCrouch = function(keyCode) {
-		return keyCode == 16;	// shift.
+	keyboard.isSpace = function(keyCode) {
+		return keyCode == 32;
 	}
 	
 	box.onkeydown = function(event) {

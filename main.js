@@ -54,15 +54,15 @@ function draw() {
 	g.print("Last pressed: " + lastPressed, 50, 300);
 }
 
-function mouseMove() {
+function mousemove() {
 	y = app.mouse.getY();
 }
 
-function mousePressed(button) {
+function mousepressed(button) {
 	
 }
 
-function mouseReleased(button) {
+function mousereleased(button) {
 	
 }
 

@@ -33,7 +33,7 @@ function load_mouse(box) {
 		mouse.x = event.clientX;
 		mouse.y = event.clientY;
 		
-		if (typeof(mouseMove) == "function") mouseMove();
+		if (typeof(mousemove) == "function") mousemove();
 	}
 	
 	box.onmousedown = function(event) {
@@ -46,7 +46,7 @@ function load_mouse(box) {
 			case 2: mouse.right = true; button = "r"; break;
 		}
 		
-		if (typeof(mousePressed) == "function") mousePressed(button);
+		if (typeof(mousepressed) == "function") mousepressed(button);
 	}
 	
 	box.onmouseup = function(event) {
@@ -59,7 +59,7 @@ function load_mouse(box) {
 			case 2: mouse.right = false; button = "r"; break;
 		}
 		
-		if (typeof(mouseReleased) == "function") mouseReleased(button);
+		if (typeof(mousereleased) == "function") mousereleased(button);
 	}
 	
 	return mouse;
