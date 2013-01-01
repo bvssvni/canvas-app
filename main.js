@@ -52,7 +52,7 @@ function draw() {
 	g.print("Last pressed: " + lastPressed, 50, 300);
 }
 
-function mousemove() {
+function mousemove(x, y) {
 	y = app.mouse.getY();
 }
 

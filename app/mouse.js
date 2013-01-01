@@ -33,7 +33,7 @@ function load_mouse(box) {
 		mouse.x = event.clientX;
 		mouse.y = event.clientY;
 		
-		if (typeof(mousemove) == "function") mousemove();
+		if (typeof(mousemove) == "function") mousemove(mouse.x, mouse.y);
 	}
 	
 	box.onmousedown = function(event) {

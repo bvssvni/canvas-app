@@ -69,6 +69,9 @@ function load_keyboard(box) {
 	keyboard.isSpace = function(keyCode) {
 		return keyCode == 32;
 	}
+	keyboard.isBackspace = function(keyCode) {
+		return keyCode == 8;
+	}
 	
 	box.onkeydown = function(event) {
 		event = event || window.event;
