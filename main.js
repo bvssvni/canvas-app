@@ -1,6 +1,6 @@
 
-var x = 0;
-var y = 0;
+var cirlcex = 0;
+var circley = 0;
 var lastPressed = 0;
 
 function load() {
@@ -31,7 +31,7 @@ function keyreleased(keyCode) {
 
 function update() {
 	var time = app.timer.getTime();
-	x = Math.sin(time) * 100 + 100;
+	circlex = Math.sin(time) * 100 + 100;
 }
 
 function draw() {
@@ -41,9 +41,9 @@ function draw() {
 	g.clear("#000000");
 	
 	g.setColorRGBA(200, 10, 100, 255);
-	g.ellipse("fill", x, y - 50, 100, 100);
+	g.ellipse("fill", circlex, circley - 50, 100, 100);
 	g.setColor("white");
-	g.ellipse("fill", x+10, y - 50 + 10, 80, 80);
+	g.ellipse("fill", circlex+10, circley - 50 + 10, 80, 80);
 	
 	g.setColorRGBA(255, 255, 255, 255);
 	g.setFont("Arial", "normal", 50);
@@ -53,14 +53,14 @@ function draw() {
 }
 
 function mousemove(x, y) {
-	y = app.mouse.getY();
+	circley = app.mouse.getY();
 }
 
-function mousepressed(button) {
+function mousepressed(button, x, y) {
 	
 }
 
-function mousereleased(button) {
+function mousereleased(button, x, y) {
 	
 }
 

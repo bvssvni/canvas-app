@@ -46,7 +46,11 @@ function load_mouse(box) {
 			case 2: mouse.right = true; button = "r"; break;
 		}
 		
-		if (typeof(mousepressed) == "function") mousepressed(button);
+		mouse.x = event.clientX;
+		mouse.y = event.clientY;
+		if (typeof(mousepressed) == "function") {
+			mousepressed(button, mouse.x, mouse.y);
+		}
 	}
 	
 	box.onmouseup = function(event) {
@@ -59,7 +63,11 @@ function load_mouse(box) {
 			case 2: mouse.right = false; button = "r"; break;
 		}
 		
-		if (typeof(mousereleased) == "function") mousereleased(button);
+		mouse.x = event.clientX;
+		mouse.y = event.clientY;
+		if (typeof(mousereleased) == "function") {
+			mousereleased(button, mouse.x, mouse.y);
+		}
 	}
 	
 	return mouse;
