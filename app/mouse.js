@@ -30,8 +30,8 @@ function load_mouse(box) {
 	box.onmousemove = function(event) {
 		event = event || window.event;
 		
-		mouse.x = event.clientX;
-		mouse.y = event.clientY;
+		mouse.x = event.clientX - box.offsetLeft;
+		mouse.y = event.clientY - box.offsetTop;
 		
 		if (typeof(mousemove) == "function") mousemove(mouse.x, mouse.y);
 	}
@@ -46,8 +46,8 @@ function load_mouse(box) {
 			case 2: mouse.right = true; button = "r"; break;
 		}
 		
-		mouse.x = event.clientX;
-		mouse.y = event.clientY;
+		mouse.x = event.clientX - box.offsetLeft;
+		mouse.y = event.clientY - box.offsetTop;
 		if (typeof(mousepressed) == "function") {
 			mousepressed(button, mouse.x, mouse.y);
 		}
@@ -63,8 +63,8 @@ function load_mouse(box) {
 			case 2: mouse.right = false; button = "r"; break;
 		}
 		
-		mouse.x = event.clientX;
-		mouse.y = event.clientY;
+		mouse.x = event.clientX - box.offsetLeft;
+		mouse.y = event.clientY - box.offsetTop;
 		if (typeof(mousereleased) == "function") {
 			mousereleased(button, mouse.x, mouse.y);
 		}

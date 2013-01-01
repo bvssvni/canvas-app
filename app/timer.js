@@ -39,29 +39,45 @@
 function load_timer() {
 	var timer = {};
 	
+	timer.reset = function() {
+		timer.lastFrame = timer.start;
+		timer.lastUpdate = timer.start;
+		timer.now = timer.start;
+		timer.fps = 0;
+		timer.fpsCounter = 0;
+		timer.fpsStart = timer.start;
+		timer.ups = 0;
+		timer.upsCounter = 0;
+		timer.upsStart = timer.start;
+		timer.doDrawing = false;
+		timer.doUpdate = false;
+	}
+	
 	timer.start = new Date().getTime() / 1000;
-	timer.lastFrame = timer.start;
-	timer.lastUpdate = timer.start;
-	timer.now = timer.start;
-	timer.fps = 0;
-	timer.fpsCounter = 0;
-	timer.fpsStart = timer.start;
-	timer.ups = 0;
-	timer.upsCounter = 0;
-	timer.upsStart = timer.start;
-	timer.doDrawing = false;
-	timer.doUpdate = false;
 	timer.frameRate = 60;
 	timer.updateRate = 120;
+	timer.reset();
 	
 	timer.update = function() {
 		// Fix the update rate.
 		do {
 			timer.now = new Date().getTime() / 1000;
+			if ((timer.now - timer.lastFrame) >= 0.25) {
+				timer.reset();
+				break;
+			}
 			if (timer.now > timer.upsStart + 1) {
-				timer.upsStart = timer.now - timer.now % 1;
-				timer.ups = timer.upsCounter;
-				timer.upsCounter = 0;
+				if (timer.now > timer.upsStart + 2) {
+					// Reset ups counter.
+					timer.upsStart = timer.now;
+					timer.upsCounter = 0;
+					timer.lastUpdate = timer.now;
+				} else {
+					// Update ups counter.
+					timer.upsStart = timer.now - timer.now % 1;
+					timer.ups = timer.upsCounter;
+					timer.upsCounter = 0;
+				}
 			}
 			timer.doUpdate = false;
 			if ((timer.now - timer.lastUpdate) * timer.updateRate >= 1) {
@@ -71,12 +87,19 @@ function load_timer() {
 			}
 			if (timer.doUpdate && update != null) update();
 		}
-		while (timer.doUpdate && (timer.now - timer.lastFrame) < 0.25);
+		while (timer.doUpdate);
 		
 		if (timer.now > timer.fpsStart + 1) {
-			timer.fpsStart = timer.now - timer.now % 1;
-			timer.fps = timer.fpsCounter;
-			timer.fpsCounter = 0;
+			if (timer.now > timer.fpsStart + 2) {
+				// Reset fps counter.
+				timer.fpsStart = timer.now;
+				timer.fpsCounter = 0;
+			} else {
+				// Update fps counter.
+				timer.fpsStart = timer.now - timer.now % 1;
+				timer.fps = timer.fpsCounter;
+				timer.fpsCounter = 0;
+			}
 		}
 		
 		timer.doDrawing = false;
