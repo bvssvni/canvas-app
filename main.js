@@ -20,11 +20,9 @@ function keypressed(keyCode) {
 	if (keyboard.isRight(keyCode)) lastPressed += " right";
 	if (keyboard.isDown(keyCode)) lastPressed += " down";
 	if (keyboard.isLeft(keyCode)) lastPressed += " left";
-	if (keyboard.isJump(keyCode)) lastPressed += " jump";
-	if (keyboard.isCrouch(keyCode)) lastPressed += " crouch";
+	if (keyboard.isSpace(keyCode)) lastPressed += " space";
 	if (keyboard.isAlt(keyCode)) lastPressed += " alt";
 	if (keyboard.isCtrl(keyCode)) lastPressed += " ctrl";
-	if (keyboard.isMeta(keyCode)) lastPressed += " meta";
 }
 
 function keyreleased(keyCode) {

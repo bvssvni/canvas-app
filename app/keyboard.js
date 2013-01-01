@@ -40,14 +40,8 @@ function load_keyboard(box) {
 	if (box == null) throw "Missing argument \"box\"";
 	
 	var keyboard = {};
-	keyboard.modifierCount = 0;
+	keyboard.metaDown = false;
 	
-	keyboard.isModifier = function(keyCode) {
-		return keyCode == 16	// shift.
-		|| keyCode == 17		// ctrl.
-		|| keyCode == 18		// alt.
-		|| keyCode == 91;		// meta.
-	}
 	keyboard.isShift = function(keyCode) {
 		return keyCode == 16;
 	}
@@ -80,16 +74,16 @@ function load_keyboard(box) {
 		event = event || window.event;
 		
 		var keyCode = event.keyCode;
-		if (keyboard.isModifier(keyCode)) keyboard.modifierCount++;
-		
+		if (keyboard.isMeta(keyCode)) keyboard.metaDown = true;
+		if (keyboard.metaDown) return;
 		if (typeof(keypressed) == "function") keypressed(keyCode);
 	}
 	box.onkeyup = function(event) {
 		event = event || window.event;
 		
 		var keyCode = event.keyCode;
-		if (keyboard.isModifier(keyCode)) keyboard.modifierCount--;
-		
+		if (keyboard.isMeta(keyCode)) keyboard.metaDown = false;
+		if (keyboard.metaDown) return;
 		if (typeof(keyreleased) == "function") keyreleased(keyCode);
 	}
 	
