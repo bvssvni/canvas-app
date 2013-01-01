@@ -9,7 +9,7 @@ For version log, view the individual files.
 
 ##Example
 
-<a target="_blank" href="http://htmlpreview.github.com/?https://github.com/bvssvni/canvas-app/blob/master/index.html">FPS, UPS, Keyboard</a>
+<a target="_blank" href="http://htmlpreview.github.com/?https://github.com/bvssvni/canvas-app/blob/master/examples/fps-ups-keyboard-mouse/index.html">FPS, UPS, Keyboard</a>
 
 ##Introduction
 
