@@ -48,6 +48,7 @@ function load_mouse(box) {
 		
 		mouse.x = event.clientX - box.offsetLeft;
 		mouse.y = event.clientY - box.offsetTop;
+		if (document.activeElement != box) return;
 		if (typeof(mousepressed) == "function") {
 			mousepressed(button, mouse.x, mouse.y);
 		}

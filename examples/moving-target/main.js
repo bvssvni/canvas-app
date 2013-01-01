@@ -7,7 +7,7 @@ game.targetCircleWidth = [20, 10, 5];
 game.targetDarkColor = ["#CC0000", "#00CC00", "#0000CC"];
 game.targetBrightColor = ["#FFFFFF", "#FFFFFF", "#FFFFFF"];
 game.targetPoints = [[1, 2, 3, 4], [2, 4, 8, 16], [4, 16, 64, 256]];
-game.targetFrequency = [0.8, 1, 2];
+game.targetFrequency = [0.8, 1, 1.2];
 game.targetX = 0;
 game.targetY = 0;
 game.difficulty = 0;
@@ -85,10 +85,13 @@ function update() {
 }
 
 function draw() {
-	var x = app.mouse.getX();
-	var y = app.mouse.getY();
-	if (targetPoints(x, y, game.targetX, game.targetY, game.difficulty) > 0) {
-		app.graphics.clear("#0000FF");
+	var w = app.graphics.getWidth();
+	var h = app.graphics.getHeight();
+	var cx = w/2;
+	var cy = h/2;
+	
+	if (targetPoints(cx, cy, game.targetX, game.targetY, game.difficulty) > 0) {
+		app.graphics.clear(game.targetDarkColor[game.difficulty]);
 	} else {
 		app.graphics.clear("#000000");
 	}
@@ -97,10 +100,30 @@ function draw() {
 	app.graphics.setFont(game.scoreFont, game.scoreStyle, game.scoreSize);
 	app.graphics.setColor(game.scoreColor);
 	app.graphics.print("score: " + game.score, 20, 20);
+	
+	app.graphics.setColor("#C0C0C0");
+	app.graphics.line(cx - 10, cy, cx - 2, cy);
+	app.graphics.line(cx + 10, cy , cx + 2, cy);
+	app.graphics.line(cx, cy - 10, cx, cy - 2);
+	app.graphics.line(cx, cy + 10, cx, cy + 2);
+}
+
+function shoot() {
+	var w = app.graphics.getWidth();
+	var h = app.graphics.getHeight();
+	var cx = w/2;
+	var cy = h/2;
+	var targetX = game.targetX;
+	var targetY = game.targetY;
+	var difficulty = game.difficulty;
+	game.score += targetPoints(cx, cy, targetX, targetY, difficulty);
+	newTarget();
 }
 
 function keypressed(keyCode) {
-	
+	if (app.keyboard.isSpace(keyCode)) {
+		shoot();
+	}
 }
 
 function keyreleased(keyCode) {
@@ -108,15 +131,10 @@ function keyreleased(keyCode) {
 }
 
 function mousemove(x, y) {
-	
 }
 
 function mousepressed(button, x, y) {
-	var targetX = game.targetX;
-	var targetY = game.targetY;
-	var difficulty = game.difficulty;
-	game.score += targetPoints(x, y, targetX, targetY, difficulty);
-	newTarget();
+	shoot();
 }
 
 function mousereleased(button, x, y) {
