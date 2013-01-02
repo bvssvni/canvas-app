@@ -105,11 +105,14 @@ function load_timer() {
 		timer.doDrawing = false;
 		if ((timer.now - timer.lastFrame) * timer.frameRate >= 1) {
 			timer.fpsCounter++;
-			timer.lastFrame += 1/timer.frameRate;
+			// Jump to last frame if skipped some.
+			timer.lastFrame += Math.floor((timer.now - timer.lastFrame) * timer.frameRate) / timer.frameRate;
 			timer.doDrawing = true;
 		}
 		
-		if (timer.doDrawing && typeof(draw) == "function") draw();
+		if (timer.doDrawing && typeof(draw) == "function") {
+			draw();
+		}
 	}
 	
 	timer.setFPS = function(frameRate) {
