@@ -37,6 +37,11 @@
  */
 
 function load_timer() {
+	var now = Date.now;
+	if (typeof(now) != "function") {
+		now = function() {return new Date().getTime();};
+	}
+	
 	var timer = {};
 	
 	timer.reset = function() {
@@ -53,7 +58,7 @@ function load_timer() {
 		timer.doUpdate = false;
 	}
 	
-	timer.start = new Date().getTime() / 1000;
+	timer.start = 0.001 * now();
 	timer.frameRate = 60;
 	timer.updateRate = 120;
 	timer.reset();
@@ -61,7 +66,7 @@ function load_timer() {
 	timer.update = function() {
 		// Fix the update rate.
 		do {
-			timer.now = new Date().getTime() / 1000;
+			timer.now = 0.001 * now();
 			if ((timer.now - timer.lastFrame) >= 0.25) {
 				timer.reset();
 				break;
