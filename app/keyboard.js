@@ -41,6 +41,7 @@ function load_keyboard(box) {
 	
 	var keyboard = {};
 	keyboard.metaDown = false;
+	keyboard.metaDownTime = 0;
 	keyboard.pressed = {};
 	
 	keyboard.isShift = function(keyCode) {
@@ -81,7 +82,16 @@ function load_keyboard(box) {
 		if (keyboard.pressed[keyCode]) return;
 		
 		keyboard.pressed[keyCode] = true;
-		if (keyboard.isMeta(keyCode)) keyboard.metaDown = true;
+		if (keyboard.isMeta(keyCode)) {
+			keyboard.metaDownTime = new Date().getTime() / 1000
+			keyboard.metaDown = true;
+		}
+		if (keyboard.metaDown) {
+			var time = new Date().getTime() / 1000;
+			if (time - keyboard.metaDownTime >= 3) {
+				keyboard.metaDown = false;
+			}
+		}
 		if (keyboard.metaDown) return;
 		if (typeof(keypressed) == "function") keypressed(keyCode);
 	}
