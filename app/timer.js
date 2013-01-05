@@ -45,20 +45,20 @@ function load_timer() {
 	var timer = {};
 	
 	timer.reset = function() {
-		timer.lastFrame = timer.start;
-		timer.lastUpdate = timer.start;
-		timer.now = timer.start;
+		timer.lastFrame = timer.now;
+		timer.lastUpdate = timer.now;
 		timer.fps = 0;
 		timer.fpsCounter = 0;
-		timer.fpsStart = timer.start;
+		timer.fpsStart = timer.now;
 		timer.ups = 0;
 		timer.upsCounter = 0;
-		timer.upsStart = timer.start;
+		timer.upsStart = timer.now;
 		timer.doDrawing = false;
 		timer.doUpdate = false;
 	}
 	
 	timer.start = 0.001 * now();
+	timer.now = timer.start;
 	timer.frameRate = 60;
 	timer.updateRate = 120;
 	timer.reset();
