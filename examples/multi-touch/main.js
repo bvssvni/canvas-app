@@ -15,7 +15,7 @@ function load_touchscreen(box) {
 	return touchscreen;
 }
 
-var touching = false;
+var countFingers = 0;
 
 function load() {
 	
@@ -30,7 +30,7 @@ function draw() {
 	g.clear("#000000");
 	g.setColor("#FFFFFF");
 	g.setFont("georgia", "normal", 20);
-	g.print("Touching: " + touching, 0, 20);
+	g.print("Counting fingers: " + countFingers, 0, 20);
 }
 
 function keypressed(keyCode) {
@@ -54,11 +54,11 @@ function mousereleased(button, x, y) {
 }
 
 function touchstart() {
-	touching = true;
+	countFingers++;
 }
 
 function touchend() {
-	touching = false;
+	countFingers--;
 }
 
 
