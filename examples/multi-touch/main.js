@@ -72,10 +72,10 @@ function update() {
 }
 
 function drawTouches() {
+	var touches = app.touchscreen.getTouches();
 	if (touches == null) return;
 	
 	var y = 40;
-	var touches = app.touchscreen.getTouches();
 	for (var i = 0; i < touches.length; i++) {
 		g.print("" + touches[i].pageX + ", " + touches[i].pageY, 0, y);
 		y += 20;
