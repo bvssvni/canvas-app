@@ -85,7 +85,7 @@ function drawTouches() {
 	
 	var y = 40;
 	for (var i = 0; i < touches.length; i++) {
-		g.print("" + touches[i].pageX + ", " + touches[i].pageY, 0, y);
+		g.print("" + touches[i].clientX + ", " + touches[i].clientY, 0, y);
 		y += 20;
 	}
 }
