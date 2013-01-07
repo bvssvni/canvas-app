@@ -6,6 +6,12 @@ function load_touchscreen(box) {
 	touchscreen.targetTouches = null;
 	touchscreen.changedTouches = null;
 	
+	touchscreen.numberOfFingers = function() {
+		if (touchscreen.touches == null) return 0;
+		
+		return touchscreen.touches.length;
+	}
+	
 	touchscreen.getTouches = function() {
 		return touchscreen.touches;
 	}
@@ -61,8 +67,6 @@ function load_touchscreen(box) {
 	return touchscreen;
 }
 
-var countFingers = 0;
-
 function load() {
 	
 }
@@ -91,7 +95,9 @@ function draw() {
 	g.clear("#000000");
 	g.setColor("#FFFFFF");
 	g.setFont("georgia", "normal", 20);
-	g.print("Counting fingers: " + countFingers, 0, 20);
+	
+	var fingers = app.touchscreen.numberOfFingers();
+	g.print("Number of fingers: " + fingers, 0, 20);
 	
 	drawTouches();
 }
