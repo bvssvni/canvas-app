@@ -2,14 +2,19 @@
 function load_touchscreen(box) {
 	var touchscreen = {};
 	
+	box.ontouchmove = function(event) {
+		if (typeof(event.preventDefault) == "function") event.preventDefault();
+		if (typeof(touchmove) == "function") touchmove();
+	}
+	
 	box.ontouchstart = function(event) {
 		if (typeof(event.preventDefault) == "function") event.preventDefault();
-		if (typeof(touchstart) == "function") touchstart();
+		if (typeof(touchpressed) == "function") touchpressed();
 	}
 	
 	box.ontouchend = function(event) {
 		if (typeof(event.preventDefault) == "function") event.preventDefault();
-		if (typeof(touchend) == "function") touchend();
+		if (typeof(touchreleased) == "function") touchreleased();
 	}
 	
 	return touchscreen;
@@ -53,11 +58,15 @@ function mousereleased(button, x, y) {
 	
 }
 
-function touchstart() {
+function touchmove() {
+	
+}
+
+function touchpressed() {
 	countFingers++;
 }
 
-function touchend() {
+function touchreleased() {
 	countFingers--;
 }
 
