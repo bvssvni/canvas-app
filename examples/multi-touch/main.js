@@ -4,6 +4,22 @@ function load_touchscreen(box) {
 	
 	touchscreen.touches = [];
 	
+	document.ontouchstart = function() {
+		if (typeof(event.preventDefault) == "function") event.preventDefault();
+	}
+	
+	document.ontouchend = function() {
+		if (typeof(event.preventDefault) == "function") event.preventDefault();
+	}
+	
+	document.ontouchmove = function() {
+		if (typeof(event.preventDefault) == "function") event.preventDefault();
+	}
+	
+	document.ontouchcancel = function() {
+		if (typeof(event.preventDefault) == "function") event.preventDefault();
+	}
+	
 	touchscreen.numberOfFingers = function() {
 		return touchscreen.touches.length;
 	}
