@@ -12,6 +12,7 @@ For version log, view the individual files.
 <a target="_blank" href="http://htmlpreview.github.com/?https://github.com/bvssvni/canvas-app/blob/master/examples/fps-ups-keyboard-mouse/index.html">FPS, UPS, Keyboard</a>  
 <a target="_blank" href="http://htmlpreview.github.com/?https://github.com/bvssvni/canvas-app/blob/master/examples/moving-target/index.html">Moving target</a>  
 <a target="_blank" href="http://htmlpreview.github.com/?https://github.com/bvssvni/canvas-app/blob/master/examples/line-intersection/index.html">Line intersection</a>  
+<a target="_blank" href="http://htmlpreview.github.com/?https://github.com/bvssvni/canvas-app/blob/master/examples/multi-touch/index.html">Multi-touch</a>  
 
 ##Introduction
 
