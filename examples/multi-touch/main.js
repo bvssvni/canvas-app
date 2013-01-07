@@ -28,7 +28,7 @@ function draw() {
 	g.setColor("#FFFFFF");
 	g.setFont("georgia", "normal", 20);
 	
-	var fingers = app.touchscreen.numberOfFingers();
+	var fingers = app.touchscreen.getTouches().length;
 	g.print("Number of fingers: " + fingers, 0, 20);
 	
 	drawTouches();

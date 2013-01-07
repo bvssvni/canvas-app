@@ -17,9 +17,6 @@ function load_touchscreen(box) {
 	document.ontouchcancel = function() {
 		if (typeof(event.preventDefault) == "function") event.preventDefault();
 	}
-	touchscreen.numberOfFingers = function() {
-		return touchscreen.touches.length;
-	}
 	touchscreen.getTouches = function() {
 		return touchscreen.touches;
 	}
