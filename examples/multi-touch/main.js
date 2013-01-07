@@ -72,8 +72,12 @@ function update() {
 }
 
 function drawTouches() {
+	var g = app.graphics;
 	var touches = app.touchscreen.getTouches();
-	if (touches == null) return;
+	if (touches == null) {
+		g.print("No touching", 0, 40);
+		return;
+	}
 	
 	var y = 40;
 	for (var i = 0; i < touches.length; i++) {
