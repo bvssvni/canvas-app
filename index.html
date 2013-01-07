@@ -5,8 +5,10 @@
  by Sven Nilsen, 2012
  http://www.cutoutpro.com
  
- Version: 0.000 in angular degrees version notation
+ Version: 0.001 in angular degrees version notation
  http://isprogrammingeasy.blogspot.no/2012/08/angular-degrees-versioning-notation.html
+ 
+ 0.001	Added touchscreen.js.
  
  -->
 
@@ -60,6 +62,7 @@
 <script src="app/timer.js"></script>
 <script src="app/keyboard.js"></script>
 <script src="app/mouse.js"></script>
+<script src="app/touchscreen.js"></script>
 <script>
 	var app = {};
 	function init() {
@@ -73,6 +76,8 @@
 		? load_keyboard(box) : null;
 		var mouse = typeof(load_mouse) == "function"
 		? load_mouse(box) : null;
+		var touchscreen = typeof(load_touchscreen) == "function"
+		? load_touchscreen(box) : null;
 		
 		app.context = context;
 		app.graphics = graphics;
