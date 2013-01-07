@@ -17,7 +17,8 @@ function drawTouches() {
 	
 	var y = 40;
 	for (var i = 0; i < touches.length; i++) {
-		g.print("" + touches[i].x + ", " + touches[i].y, 0, y);
+		g.print("id: " + touches[i].id +
+				" xy: " + touches[i].x + ", " + touches[i].y, 0, y);
 		y += 20;
 	}
 }

@@ -34,7 +34,8 @@ function load_touchscreen(box) {
 		for (var i = 0; i < targetTouches.length; i++) {
 			var x = targetTouches[i].clientX - box.offsetLeft;
 			var y = targetTouches[i].clientY - box.offsetTop;
-			touchscreen.touches[i] = {"x": x, "y": y};
+			var id = targetTouches[i].identifier;
+			touchscreen.touches[i] = {"x": x, "y": y, "id": id};
 		}
 	}
 	
